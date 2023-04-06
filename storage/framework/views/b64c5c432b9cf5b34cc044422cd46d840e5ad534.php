@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="<?php echo e(asset('adminlte/plugins/daterangepicker/daterangepicker.css')); ?>">
     <!-- summernote -->
     <link rel="stylesheet" href="<?php echo e(asset('adminlte/plugins/summernote/summernote-bs4.min.css')); ?>">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="<?php echo e(asset('adminlte/plugins/toastr/toastr.min.css')); ?>">
+    <?php echo $__env->yieldContent('style-css'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -87,6 +90,24 @@
     <script src="<?php echo e(asset('adminlte/dist/js/demo.js')); ?>"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="<?php echo e(asset('adminlte/dist/js/pages/dashboard.js')); ?>"></script>
+    <!-- Toastr -->
+    <script src="<?php echo e(asset('adminlte/plugins/toastr/toastr.min.js')); ?>"></script>
+    <script>
+        $(document).ready(function(){
+            toastr.options = {
+                position: 'topLeft',
+                class: 'bg-success',
+                timeOut: 3000,
+                fadeOut: 3000
+            };
+            <?php if(Session::has('error')): ?>
+                toastr.error('<?php echo e(Session::get('error')); ?>','<?php echo e(Session::get('title')); ?>');
+            <?php elseif(Session::has('success')): ?>
+                toastr.info('<?php echo e(Session::get('success')); ?>','<?php echo e(Session::get('title')); ?>');
+            <?php endif; ?>
+        });
+    </script>
+    <?php echo $__env->yieldContent('bottom-js'); ?>
 </body>
 
 </html>

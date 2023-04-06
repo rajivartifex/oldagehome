@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,10 @@ Route::get('registration', [CustomAuthController::class, 'registration'])->name(
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
+//Admin Dashboard Route
 Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+
+//Admin Services Route
+Route::get('service-manage/{id}',[ServiceController::class,'manage'])->name('service-manage');
+Route::get('services-list',[ServiceController::class,'list'])->name('service-list');
+Route::post('services-store',[ServiceController::class,'store'])->name('service-store');

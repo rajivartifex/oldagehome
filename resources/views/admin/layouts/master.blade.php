@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{asset('adminlte/plugins/toastr/toastr.min.css')}}">
+    @yield('style-css')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -87,6 +90,24 @@
     <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('adminlte/dist/js/pages/dashboard.js') }}"></script>
+    <!-- Toastr -->
+    <script src="{{ asset('adminlte/plugins/toastr/toastr.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            toastr.options = {
+                position: 'topLeft',
+                class: 'bg-success',
+                timeOut: 3000,
+                fadeOut: 3000
+            };
+            @if (Session::has('error'))
+                toastr.error('{{ Session::get('error') }}','{{ Session::get('title')}}');
+            @elseif(Session::has('success'))
+                toastr.info('{{ Session::get('success') }}','{{ Session::get('title')}}');
+            @endif
+        });
+    </script>
+    @yield('bottom-js')
 </body>
 
 </html>
