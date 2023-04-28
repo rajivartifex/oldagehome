@@ -5,6 +5,7 @@
         </li>
     </ul>
     <ul class="navbar-nav ml-auto">
+        <a href="<?php echo e(route('signout')); ?>" class="btn btn-sm btn-primary">Logout</a>
     </ul>
 </nav>
 <?php /**PATH C:\xampp\htdocs\oldagehome\resources\views/admin/layouts/partials/header.blade.php ENDPATH**/ ?>

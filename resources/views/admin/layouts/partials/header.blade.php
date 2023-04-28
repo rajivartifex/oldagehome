@@ -5,5 +5,6 @@
         </li>
     </ul>
     <ul class="navbar-nav ml-auto">
+        <a href="{{route('signout')}}" class="btn btn-sm btn-primary">Logout</a>
     </ul>
 </nav>

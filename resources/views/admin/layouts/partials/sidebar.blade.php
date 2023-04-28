@@ -13,46 +13,26 @@
          <!-- Sidebar Menu -->
          <nav class="mt-2">
              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                 <li class="nav-item menu-open">
-                     <a href="#" class="nav-link active">
+                 <li class="nav-item">
+                     <a href="{{route('dashboard')}}" class="nav-link {{ request()->is('dashboard*') ? 'active' : '' }}"">
                          <i class="nav-icon fas fa-tachometer-alt"></i>
-                         <p> Dashboard <i class="right fas fa-angle-left"></i> </p>
+                         <p> Dashboard </p>
                      </a>
                  </li>
-                 {{-- <li class="nav-item">
-                     <a href="pages/widgets.html" class="nav-link">
-                         <i class="nav-icon fas fa-th"></i>
-                         <p> Services <span class="right badge badge-danger">New</span> </p>
-                     </a>
-                 </li> --}}
                  <li class="nav-item">
-                    <a href="{{route('service-list')}}" class="nav-link">
+                    <a href="{{route('service-list')}}" class="nav-link {{ request()->is('service*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p> Services </p>
                     </a>
                 </li>
-                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p> SC Details <i class="fas fa-angle-left right"></i> </p>
+                <li class="nav-item">
+                    <a href="{{route('sc-index')}}" class="nav-link {{ request()->is('sc-details*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p> SC Details </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add SC Details</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                           <a href="pages/layout/top-nav.html" class="nav-link">
-                               <i class="far fa-circle nav-icon"></i>
-                               <p>Manage SC Details</p>
-                           </a>
-                       </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
-                     <a href="pages/widgets.html" class="nav-link">
+                     <a href="{{route('admin-enquiries-list')}}" class="nav-link {{ request()->is('admin/enquiries*') ? 'active' : '' }}">
                          <i class="nav-icon fas fa-th"></i>
                          <p> Enquiry </p>
                      </a>

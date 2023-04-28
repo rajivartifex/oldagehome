@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\SCDetailController;
 use App\Http\Controllers\ServiceController;
 
 /*
@@ -22,10 +24,16 @@ Route::get('/', function () {
 });
 
 Route::get('admin', function(){
-    return view('admin.master');
+    return view('admin.layouts.master');
 });
 
 Route::get('service',[FrontController::class,'services'])->name('front-services');
+Route::get('get-enquiry', [EnquiryController::class,'index'])->name('enquiry-index');
+Route::post('enquiry/store', [EnquiryController::class,'store'])->name('enquiry-store');
+Route::get('main/home', [FrontController::class,'home'])->name('main-home');
+Route::get('search',[FrontController::class,'search'])->name('search');
+Route::post('sc-search', [FrontController::class,'findscDetail']);
+Route::get('rules', [FrontController::class,'rules'])->name('rules');
 
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
@@ -40,3 +48,10 @@ Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
 Route::get('service-manage/{id}',[ServiceController::class,'manage'])->name('service-manage');
 Route::get('services-list',[ServiceController::class,'list'])->name('service-list');
 Route::post('services-store',[ServiceController::class,'store'])->name('service-store');
+
+//Admin SC Details
+Route::get('sc-details', [SCDetailController::class,'index'])->name('sc-index');
+Route::get('sc-details/manage/{id}', [SCDetailController::class,'manage'])->name('sc-manage');
+Route::post('sc-details/store', [SCDetailController::class,'store'])->name('sc-store');
+
+Route::get('admin/enquiries', [EnquiryController::class,'backendEnqList'])->name('admin-enquiries-list');
